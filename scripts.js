@@ -241,12 +241,12 @@ function initScrollSpy() {
   // Highlight current page tab
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const pageMap = {
-    'index.html': '#home',
-    'auto.html': '#auto',
-    'maison.html': '#maison',
-    'alimentation.html': '#alimentation',
-    'services.html': '#services',
-    'contact.html': '#contact',
+    'index.html': 'index.html',
+    'auto.html': 'auto.html',
+    'maison.html': 'maison.html',
+    'alimentation.html': 'alimentation.html',
+    'services.html': 'services.html',
+    'contact.html': 'contact.html',
   };
   const activeHref = pageMap[currentPath] || pageMap['index.html'];
   tabLinks.forEach(a => {
