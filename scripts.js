@@ -102,16 +102,34 @@ snacks.forEach(p => { p.cat = 'Alimentation · Snack'; p.brand = 'Fruileg'; });
 graines.forEach(p => { p.cat = 'Alimentation · Graines & épices'; p.brand = 'Ecocircus'; });
 
 // ──────────────────────────────────────────────
-//  RENDU DES CARTES
+//  SVG PLACEHOLDERS PAR CATÉGORIE
 // ──────────────────────────────────────────────
+function placeholderSVG(cat) {
+  var svg = '';
+  if (cat.indexOf('Auto') === 0) {
+    // Car/steering wheel — navy & emerald
+    svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><rect x="10" y="35" width="180" height="85" rx="22" fill="#0A2540"/><rect x="40" y="50" width="120" height="55" rx="10" fill="#FAF8F5" opacity="0.3"/><circle cx="55" cy="120" r="16" fill="#0A2540"/><circle cx="145" cy="120" r="16" fill="#0A2540"/><rect x="78" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/><rect x="95" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/><rect x="112" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/></svg>';
+  } else if (cat.indexOf('Maison') === 0) {
+    // Home + spray — emerald & gold
+    svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><path d="M100 8L10 70v62h70V98h40v34h70V70L100 8z" fill="#2D8A4E" opacity="0.6"/><path d="M100 8L10 70v62h70V98h40v34h70V70L100 8z" fill="#0A2540"/><rect x="65" y="55" width="70" height="75" rx="4" fill="#FAF8F5" opacity="0.5"/><rect x="140" y="42" width="18" height="45" rx="6" fill="#C8903A"/><rect x="144" y="46" width="10" height="18" rx="3" fill="#F0EDE8" opacity="0.6"/></svg>';
+  } else if (cat.indexOf('Alimentation') === 0 && cat.indexOf('Graines') > -1) {
+    // Leaf/seed — green
+    svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><path d="M100 130c-15-20-55-30-55-65 0-30 20-55 55-55 35 0 55 25 55 55 0 35-40 45-55 65z" fill="#2D8A4E"/><path d="M100 130c-15-20-55-30-55-65 0-30 20-55 55-55 35 0 55 25 55 55 0 35-40 45-55 65z" fill="#0A2540" opacity="0.3"/><circle cx="100" cy="55" r="12" fill="#C8903A" opacity="0.6"/><circle cx="82" cy="70" r="8" fill="#C8903A" opacity="0.4"/><circle cx="118" cy="68" r="9" fill="#C8903A" opacity="0.5"/></svg>';
+  } else {
+    // Bottle/fruit — warm gradient for other alimentation
+    svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><rect x="70" y="10" width="60" height="22" rx="8" fill="#C8903A"/><rect x="62" y="28" width="76" height="30" rx="4" fill="#2D8A4E"/><rect x="66" y="54" width="68" height="62" rx="14" fill="#0A2540"/><rect x="66" y="70" width="68" height="46" fill="#FAF8F5" opacity="0.25"/><ellipse cx="100" cy="58" rx="24" ry="8" fill="#F0EDE8" opacity="0.4"/></svg>';
+  }
+  return '<div class="placeholder-svg">' + svg + '<span class="placeholder-label">Photo à venir</span></div>';
+}
+
 function mediaHTML(item) {
   const firstImg = item.images && item.images.length ? item.images[0] : null;
-  const badges = (item.ref ? `<span class="badge-ref">${item.ref}</span>` : '') +
-    (item.ref ? `<span class="badge-stock">En stock</span>` : '');
+  const badges = (item.ref ? '<span class="badge-ref">' + item.ref + '</span>' : '') +
+    (item.ref ? '<span class="badge-stock">En stock</span>' : '');
   if (firstImg) {
-    return `<div class="card-media"><div class="card-badges">${badges}</div><img src="${firstImg}" alt="${item.name}" loading="lazy"></div>`;
+    return '<div class="card-media"><div class="card-badges">' + badges + '</div><img src="' + firstImg + '" alt="' + item.name + '" loading="lazy"></div>';
   }
-  return `<div class="card-media placeholder"><div class="card-badges">${badges}</div>Photo à venir</div>`;
+  return '<div class="card-media placeholder"><div class="card-badges">' + badges + '</div>' + placeholderSVG(item.cat || '') + '</div>';
 }
 
 function priceHTML(item) {
@@ -297,7 +315,7 @@ function showProduct(ref) {
     window.currentGalleryImages = images;
   } else {
     media.classList.add('placeholder');
-    media.textContent = 'Photo à venir';
+    media.innerHTML = placeholderSVG(item.cat || '');
     thumbsWrap.innerHTML = '';
     window.currentGalleryImages = [];
   }
