@@ -400,3 +400,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!location.hash.startsWith('#produit-')) showCatalogueSections();
   });
 });
+
+// Logo fallback handler
+function logoFallback(img) {
+  img.outerHTML = '<div class="brand-logo-svg"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="10" fill="#2D8A4E"/><text x="22" y="30" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="19" fill="white">AY</text></svg></div>';
+}
