@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AYI Group</title>
+<meta name="description" content="Contactez AYI Group Distribution SARL — Yaoundé, Cameroun. Demandez un devis pour nos produits et services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="main-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-logo"><img src="assets/ayi-logo.png" alt="AYI Group logo" onerror="this.style.display='none'; this.parentElement.textContent='AY';"></div>
+      <span class="brand-text"><strong>AYI GROUP</strong><span>Distribution SARL</span></span>
+    </a>
+    <nav class="tabs" id="tabs">
+      <a href="index.html">Accueil</a>
+      <a href="auto.html">Auto</a>
+      <a href="maison.html">Parfumerie &amp; Maison</a>
+      <a href="alimentation.html">Alimentation</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="openDrawer()" aria-label="Voir ma demande">
+      📋 Ma demande <span class="badge" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="category-hero">
+  <span class="section-num">05</span>
+  <h1>Contact</h1>
+  <p>Parlons de votre projet — nous sommes à votre écoute.</p>
+</div>
+
+<div class="about-section" style="margin:0 auto 40px;">
+  <div class="page-section">
+    <div class="about-grid">
+      <div>
+        <p><strong>AYI GROUP Distribution SARL</strong><br>Africa Youth Investment Group Distribution<br>« La clé des services d'investissement »</p>
+        <p>📍 Fougerolles, Yaoundé, Cameroun<br>📞 (+237) 695 162 019 / 675 537 110<br>✉️ ayigroup23@gmail.com</p>
+        <p class="legal">NIU : M072315970647Q · RCCM : RC/YAE/2023/B/2883 · Capital : 990 000 FCFA</p>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); showToast('✅ Message envoyé avec succès (démo)');">
+        <label class="sr-only" for="contact-name">Votre nom</label>
+        <input id="contact-name" type="text" name="name" placeholder="Votre nom" required>
+        <label class="sr-only" for="contact-email">Votre email</label>
+        <input id="contact-email" type="email" name="email" placeholder="Votre email" required>
+        <label class="sr-only" for="contact-msg">Votre message</label>
+        <textarea id="contact-msg" name="message" rows="4" placeholder="Votre message ou demande de devis"></textarea>
+        <button type="submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 <span>AYI GROUP DISTRIBUTION SARL</span> — RC/YAE/2023/B/2883 — YAOUNDÉ, CAMEROUN
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>🛒 Ma demande</h3>
+    <button onclick="closeDrawer()" aria-label="Fermer">×</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-foot">
+    <a href="contact.html" class="btn btn-primary" style="display:flex;text-align:center;justify-content:center;"
+       onclick="closeDrawer(); showToast('📝 Complète le formulaire de contact pour envoyer ta demande')">
+      Demander un devis
+    </a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
