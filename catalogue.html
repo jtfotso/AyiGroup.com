@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AYI Group Distribution SARL — Catalogue Produits & Services</title>
+<meta name="description" content="AYI Group Distribution SARL — Votre partenaire commercial fiable au Cameroun. Distribution de produits auto, parfumerie, alimentation et services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A2540;
+    --navy-light: #153456;
+    --navy-dark: #051525;
+    --cream: #FAF8F5;
+    --cream-dark: #F0EDE8;
+    --white: #FFFFFF;
+    --ink: #1A1D23;
+    --ink-medium: #4E5564;
+    --ink-soft: #8B95A5;
+    --ink-light: #B8C0CC;
+    --emerald: #2D8A4E;
+    --emerald-light: #3BA55E;
+    --emerald-dark: #1F6B38;
+    --emerald-soft: rgba(45, 138, 78, 0.08);
+    --gold: #C8903A;
+    --gold-light: rgba(200, 144, 58, 0.12);
+    --rose: #D4645C;
+    --line: #E2DED8;
+    --line-light: #F0EDE9;
+    --shadow-sm: 0 1px 3px rgba(10, 37, 64, 0.06);
+    --shadow-md: 0 4px 16px rgba(10, 37, 64, 0.08);
+    --shadow-lg: 0 12px 40px rgba(10, 37, 64, 0.12);
+    --shadow-xl: 0 20px 60px rgba(10, 37, 64, 0.16);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ---- TYPOGRAPHY ---- */
+  h1, h2, h3, h4, .display { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.02em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ---- HEADER ---- */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250, 248, 245, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--line-light);
+    transition: box-shadow var(--transition);
+  }
+  header.scrolled { box-shadow: var(--shadow-md); }
+  .nav-wrap {
+    max-width: 1240px; margin: 0 auto;
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .brand-logo {
+    width: 44px; height: 44px; border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem;
+    color: white; flex-shrink: 0;
+  }
+  .brand-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); }
+  .brand-text { line-height: 1.15; }
+  .brand-text strong { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.95rem; display: block; color: var(--navy); }
+  .brand-text span { font-size: 0.62rem; color: var(--ink-soft); letter-spacing: 0.04em; text-transform: uppercase; }
+  nav.tabs { display: flex; gap: 3px; background: var(--cream-dark); padding: 4px; border-radius: 28px; flex-wrap: wrap; }
+  nav.tabs a {
+    padding: 8px 16px; border-radius: 24px; text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; color: var(--ink-medium);
+    transition: all var(--transition); white-space: nowrap;
+  }
+  nav.tabs a:hover { color: var(--ink); background: rgba(255,255,255,0.5); }
+  nav.tabs a.active { background: var(--navy); color: white; box-shadow: 0 2px 8px rgba(10, 37, 64, 0.25); }
+  .cart-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--emerald); color: white;
+    border: none; padding: 10px 20px; border-radius: 28px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; transition: all var(--transition);
+    box-shadow: 0 2px 8px rgba(45, 138, 78, 0.25);
+  }
+  .cart-btn:hover { background: var(--emerald-dark); box-shadow: 0 4px 14px rgba(45, 138, 78, 0.35); transform: translateY(-1px); }
+  .cart-btn .badge {
+    background: white; color: var(--emerald);
+    font-size: 0.68rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 12px; min-width: 22px; text-align: center;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    max-width: 1240px; margin: 0 auto;
+    padding: 80px 28px 70px;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: center;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--emerald); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 16px; display: inline-block;
+    background: var(--emerald-soft); padding: 6px 14px; border-radius: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.08;
+    margin: 0 0 18px; color: var(--navy);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 1rem; color: var(--ink-medium);
+    max-width: 56ch; line-height: 1.7; margin: 0 0 28px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 28px;
+    font-size: 0.9rem; font-weight: 600; font-family: 'Inter', sans-serif;
+    cursor: pointer; transition: all var(--transition);
+    border: none; text-decoration: none;
+  }
+  .btn-primary { background: var(--navy); color: white; box-shadow: 0 4px 14px rgba(10, 37, 64, 0.3); }
+  .btn-primary:hover { background: var(--navy-light); box-shadow: 0 6px 20px rgba(10, 37, 64, 0.4); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: white; }
+
+  .ledger-card {
+    background: linear-gradient(145deg, var(--navy), var(--navy-light));
+    color: white; border-radius: var(--radius-lg); padding: 32px 28px;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .ledger-card::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(45,138,78,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .ledger-card::after {
+    content: ''; position: absolute; bottom: -30px; left: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(200,144,58,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .ledger-card h3 { margin: 0 0 20px; font-size: 1rem; color: white; position: relative; z-index: 1; }
+  .ledger-card .line {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    position: relative; z-index: 1;
+  }
+  .ledger-card .line:last-child { border-bottom: none; }
+  .ledger-card .line span { color: rgba(255,255,255,0.6); }
+  .ledger-card .line b { color: var(--emerald-light); font-weight: 600; }
+
+  /* ---- STATS BAR ---- */
+  .stats-bar {
+    max-width: 1240px; margin: 0 auto; padding: 0 28px 50px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  }
+  .stat-item {
+    text-align: center; padding: 24px 16px;
+    background: white; border-radius: var(--radius-md);
+    border: 1px solid var(--line-light); transition: all var(--transition);
+  }
+  .stat-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700;
+    color: var(--emerald); display: block; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--ink-soft); font-weight: 500; }
+
+  /* ---- FILTER BAR ---- */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  .filter-bar {
+    position: sticky; top: var(--header-h, 76px); z-index: 90;
+    max-width: 1240px; margin: 0 auto;
+    padding: 14px 28px;
+    display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line-light);
+  }
+  .filter-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .filter-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem;
+    color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 6px; font-weight: 600;
+  }
+  .filter-btn {
+    background: white; border: 1.5px solid var(--line); color: var(--ink-medium);
+    padding: 6px 15px; border-radius: 18px; font-size: 0.76rem; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    transition: all var(--transition);
+  }
+  .filter-btn:hover { border-color: var(--navy); color: var(--navy); background: rgba(10, 37, 64, 0.03); }
+  .filter-btn.active { background: var(--navy); border-color: var(--navy); color: white; box-shadow: 0 2px 8px rgba(10,37,64,0.2); }
+  .filter-count {
+    margin-left: auto; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--ink-soft);
+    background: var(--cream-dark); padding: 6px 14px; border-radius: 14px;
+  }
+
+  .card.filtered-out { display: none !important; }
+  .rayon.filtered-empty { display: none; }
+
+  /* ---- SECTIONS ---- */
+  .section { max-width: 1240px; margin: 0 auto; padding: 60px 28px; }
+
+  .section-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 10px;
+    padding-bottom: 18px; border-bottom: 2px solid var(--navy);
+  }
+  .section-num {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.8rem;
+    color: var(--emerald); flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.5rem; color: var(--navy); margin: 0; }
+  .section-header .subtitle { font-size: 0.82rem; color: var(--ink-soft); margin-left: auto; font-weight: 400; }
+
+  .rayon { margin-top: 36px; }
+  .rayon-title {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.74rem;
+    text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-soft);
+    margin-bottom: 18px; padding-left: 14px; border-left: 3px solid var(--emerald);
+    font-weight: 600;
+  }
+
+  /* ---- GRID & CARDS ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: white; border: 1px solid var(--line);
+    border-radius: var(--radius-md); overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: all var(--transition-slow); cursor: pointer;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg); border-color: transparent;
+  }
+  .card-media {
+    height: 160px; background: var(--cream-dark); position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--line-light);
+  }
+  .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .card:hover .card-media img { transform: scale(1.05); }
+  .card-media.placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; color: var(--ink-light); font-size: 0.82rem;
+    text-align: center; padding: 16px;
+    background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+  }
+  .card-badges { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; z-index: 1; }
+  .badge-ref {
+    background: var(--navy); color: white; padding: 3px 10px; border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .badge-stock {
+    background: white; color: var(--emerald); border: 1px solid var(--emerald);
+    padding: 3px 10px; border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  .card-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card-body h3 { font-size: 0.92rem; line-height: 1.3; color: var(--ink); font-weight: 600; }
+  .card-body .format { font-size: 0.74rem; color: var(--ink-soft); }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line);
+    gap: 10px; flex-wrap: wrap;
+  }
+  .price-wrap .price { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 0.82rem; color: var(--ink); }
+  .price-wrap .bulk { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--emerald); margin-top: 3px; }
+  .price-wrap .tbd { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--ink-soft); font-style: italic; }
+  .add-btn {
+    background: white; border: 1.5px solid var(--navy); color: var(--navy);
+    padding: 7px 15px; border-radius: 18px; font-size: 0.75rem; cursor: pointer;
+    font-family: 'Inter', sans-serif; font-weight: 600; white-space: nowrap;
+    transition: all var(--transition);
+  }
+  .add-btn:hover { background: var(--navy); color: white; }
+
+  /* ---- SERVICE CARDS ---- */
+  .service-card {
+    background: linear-gradient(145deg, var(--navy), var(--navy-light));
+    color: white; border-radius: var(--radius-md); padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: all var(--transition);
+    border: 1px solid transparent;
+  }
+  .service-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .service-card .num {
+    font-family: 'JetBrains Mono', monospace; color: var(--emerald-light);
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .service-card h3 { margin: 0; font-size: 1.08rem; color: white; }
+  .service-card p { margin: 0; color: rgba(255,255,255,0.72); font-size: 0.86rem; line-height: 1.6; flex: 1; }
+  .service-card .add-btn {
+    border-color: var(--emerald-light); color: var(--emerald-light);
+    align-self: flex-start;
+  }
+  .service-card .add-btn:hover { background: var(--emerald-light); color: var(--navy); }
+
+  /* ---- ABOUT/CONTACT ---- */
+  .about-section {
+    background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white; border-radius: var(--radius-lg); overflow: hidden;
+    position: relative;
+  }
+  .about-section::before {
+    content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(45,138,78,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .about-section .section { position: relative; z-index: 1; }
+  .about-section .section-header { border-color: rgba(255,255,255,0.2); }
+  .about-section .section-num { color: var(--emerald-light); }
+  .about-section .section-header h2 { color: white; }
+  .about-section .section-header .subtitle { color: rgba(255,255,255,0.5); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 28px;
+    align-items: start;
+  }
+  .about-grid p { color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 8px; font-size: 0.94rem; }
+  .about-grid p strong { color: white; }
+  .about-grid .legal { font-size: 0.72rem; opacity: 0.45; margin-top: 16px; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .contact-form input, .contact-form textarea {
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.18);
+    padding: 14px 18px; border-radius: var(--radius-sm);
+    color: white; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+    transition: all var(--transition); outline: none;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--emerald-light); background: rgba(255,255,255,0.1); }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form button {
+    background: var(--emerald); color: white; border: none;
+    padding: 15px; border-radius: var(--radius-sm);
+    font-weight: 700; font-size: 0.9rem; cursor: pointer;
+    transition: all var(--transition);
+  }
+  .contact-form button:hover { background: var(--emerald-light); }
+
+  /* ---- PRODUCT DETAIL ---- */
+  #product-detail {
+    display: none; max-width: 1100px; margin: 0 auto;
+    padding: 50px 28px 80px; animation: fadeInUp 0.4s ease;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: none; border: none; color: var(--ink-medium);
+    font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+    cursor: pointer; padding: 0; margin-bottom: 28px; transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--navy); }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .detail-media-wrap { display: flex; flex-direction: column; gap: 12px; }
+  .detail-media {
+    background: white; border: 1px solid var(--line); border-radius: var(--radius-md);
+    overflow: hidden; height: 380px; position: relative;
+  }
+  .detail-media img { width: 100%; height: 100%; object-fit: cover; }
+  .detail-media.placeholder {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft); font-family: 'Space Grotesk', sans-serif; font-size: 1rem;
+    background: var(--cream-dark);
+  }
+  .detail-thumbs { display: flex; gap: 8px; }
+  .detail-thumbs .thumb {
+    width: 72px; height: 72px; object-fit: cover; border-radius: var(--radius-sm);
+    border: 2px solid transparent; cursor: pointer; opacity: 0.6;
+    transition: all var(--transition);
+  }
+  .detail-thumbs .thumb:hover { opacity: 0.85; }
+  .detail-thumbs .thumb.active { border-color: var(--emerald); opacity: 1; box-shadow: 0 0 0 3px var(--emerald-soft); }
+  .detail-crumb {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+    color: var(--emerald); text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .detail-info h1 { font-size: 1.7rem; color: var(--navy); margin: 0 0 12px; line-height: 1.2; }
+  .detail-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .detail-meta span {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+    border: 1px solid var(--line); border-radius: 14px; padding: 5px 12px;
+    color: var(--ink-medium); font-weight: 500;
+  }
+  .detail-meta span.stock { border-color: var(--emerald); color: var(--emerald); background: var(--emerald-soft); }
+  .detail-desc {
+    color: var(--ink-medium); line-height: 1.75; font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+  .detail-price-box {
+    background: var(--cream-dark); border: 1px solid var(--line);
+    border-radius: var(--radius-md); padding: 22px 24px; margin-bottom: 24px;
+  }
+  .detail-price-box .unit { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.4rem; color: var(--navy); }
+  .detail-price-box .bulk { font-family: 'JetBrains Mono', monospace; font-size: 0.84rem; color: var(--emerald); margin-top: 8px; font-weight: 500; }
+  .detail-price-box .tbd { font-family: 'JetBrains Mono', monospace; font-style: italic; color: var(--ink-soft); }
+  .detail-cta {
+    background: var(--navy); color: white; border: none;
+    padding: 16px 28px; border-radius: 28px; font-size: 0.94rem;
+    font-weight: 600; cursor: pointer; width: 100%;
+    transition: all var(--transition); font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 14px rgba(10,37,64,0.25);
+  }
+  .detail-cta:hover { background: var(--navy-light); box-shadow: 0 6px 20px rgba(10,37,64,0.35); }
+
+  /* ---- DRAWER ---- */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(5, 21, 37, 0.5);
+    opacity: 0; pointer-events: none; transition: opacity var(--transition-slow); z-index: 200;
+    backdrop-filter: blur(4px);
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 92vw);
+    background: white; z-index: 210; transform: translateX(100%);
+    transition: transform var(--transition-slow);
+    display: flex; flex-direction: column; box-shadow: var(--shadow-xl);
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head {
+    padding: 24px 26px 20px; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .drawer-head h3 { margin: 0; font-size: 1.15rem; color: var(--navy); }
+  .drawer-head button {
+    background: var(--cream-dark); border: none; width: 36px; height: 36px;
+    border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition); color: var(--ink-medium);
+  }
+  .drawer-head button:hover { background: var(--rose); color: white; }
+  .drawer-items { flex: 1; overflow-y: auto; padding: 18px 26px; }
+  .drawer-item {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line-light);
+    font-size: 0.88rem;
+  }
+  .drawer-item .rm {
+    background: none; border: none; color: var(--rose);
+    cursor: pointer; font-size: 0.72rem; font-weight: 500;
+    text-decoration: underline; padding: 4px 8px; transition: color var(--transition);
+  }
+  .drawer-item .rm:hover { color: #b04038; }
+  .drawer-empty {
+    color: var(--ink-soft); font-size: 0.9rem; padding: 40px 0;
+    text-align: center;
+  }
+  .drawer-foot { padding: 20px 26px 28px; border-top: 1px solid var(--line); }
+  .drawer-foot .btn { width: 100%; justify-content: center; }
+
+  /* ---- TOAST ---- */
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--navy); color: white; padding: 14px 26px;
+    border-radius: 28px; font-size: 0.86rem; font-weight: 500;
+    opacity: 0; transition: all var(--transition-slow); z-index: 300;
+    pointer-events: none; box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 32px 28px; text-align: center;
+    font-size: 0.74rem; color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+    border-top: 1px solid var(--line-light);
+    margin-top: 40px;
+  }
+  footer span { color: var(--emerald); }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-in { animation: fadeSlideIn 0.5s ease forwards; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 36px; padding: 50px 20px 40px; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 0 20px 40px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .nav-wrap { padding: 12px 16px; }
+    nav.tabs { order: 3; width: 100%; justify-content: center; }
+    .filter-bar { top: 72px; padding: 12px 16px; }
+    .section { padding: 40px 20px; }
+  }
+
+  @media (max-width: 500px) {
+    .stats-bar { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat-item { padding: 16px 10px; }
+    .stat-num { font-size: 1.3rem; }
+    .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .filter-bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .filter-count { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<header id="main-header">
+  <div class="nav-wrap">
+    <a href="#home" class="brand" onclick="backToCatalog();">
+      <div class="brand-logo"><img src="assets/ayi-logo.png" alt="AYI Group logo" onerror="this.style.display='none'; this.parentElement.textContent='AY';"></div>
+      <span class="brand-text"><strong>AYI GROUP</strong><span>Distribution SARL</span></span>
+    </a>
+    <nav class="tabs" id="tabs">
+      <a href="#home" class="active">Accueil</a>
+      <a href="#auto">Auto</a>
+      <a href="#maison">Parfumerie &amp; Maison</a>
+      <a href="#alimentation">Alimentation</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="openDrawer()" aria-label="Voir ma demande">
+      📋 Ma demande <span class="badge" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div>
+    <span class="eyebrow">AYI Group Distribution SARL · Yaoundé, Cameroun</span>
+    <h1>Votre partenaire commercial fiable, du rayon auto à votre table</h1>
+    <p>Prestations, distribution, commerce général, négoce, import‑export&nbsp;: AYI&nbsp;Group distribue des produits d'entretien auto, de parfumerie, d'alimentation, et accompagne les entreprises avec ses services de conseil.</p>
+    <div class="hero-actions">
+      <a href="#alimentation" class="btn btn-primary">Découvrir le catalogue →</a>
+      <a href="#contact" class="btn btn-outline">Nous contacter</a>
+    </div>
+  </div>
+  <div class="ledger-card">
+    <h3>Fiche société</h3>
+    <div class="line"><span>Capital</span><b>990 000 FCFA</b></div>
+    <div class="line"><span>RCCM</span><b>RC/YAE/2023/B/2883</b></div>
+    <div class="line"><span>Univers</span><b>Auto · Maison · Alimentation</b></div>
+    <div class="line"><span>Siège</span><b>Fougerolles, Yaoundé</b></div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">50+</span>
+    <span class="stat-label">Produits au catalogue</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Marques distribuées</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Univers produits</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5</span>
+    <span class="stat-label">Services disponibles</span>
+  </div>
+</div>
+
+<div class="filter-bar" id="filter-bar">
+  <div class="filter-group">
+    <span class="filter-label">Marque</span>
+    <button class="filter-btn active" data-type="brand" data-value="all">Toutes</button>
+    <button class="filter-btn" data-type="brand" data-value="Fruileg">Fruileg</button>
+    <button class="filter-btn" data-type="brand" data-value="ABRO">ABRO</button>
+    <button class="filter-btn" data-type="brand" data-value="Godrej AER">Godrej AER</button>
+    <button class="filter-btn" data-type="brand" data-value="Ecocircus">Ecocircus</button>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Prix</span>
+    <button class="filter-btn active" data-type="status" data-value="all">Tous</button>
+    <button class="filter-btn" data-type="status" data-value="disponible">Prix disponible</button>
+    <button class="filter-btn" data-type="status" data-value="a-venir">Prix à venir</button>
+  </div>
+  <span class="filter-count" id="filter-count"></span>
+</div>
+
+<!-- UNIVERS 1 : AUTO -->
+<section class="section" id="auto">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Entretien &amp; Accessoires Auto</h2>
+    <span class="subtitle">Gamme ABRO</span>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Désodorisants organiques (canettes) — ABRO Organic, 42g</div>
+    <div class="grid" id="grid-abro-organic"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Entretien châssis &amp; carrosserie</div>
+    <div class="grid" id="grid-carrosserie"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Rénovateurs tableaux de bord</div>
+    <div class="grid" id="grid-dashboard"></div>
+  </div>
+</section>
+
+<!-- UNIVERS 2 : MAISON -->
+<section class="section" id="maison">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Parfumerie &amp; Maison</h2>
+    <span class="subtitle">Godrej AER &amp; ABRO</span>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Parfums d'intérieur &amp; sprays</div>
+    <div class="grid" id="grid-parfums"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Entretien maison &amp; protection</div>
+    <div class="grid" id="grid-entretien-maison"></div>
+  </div>
+</section>
+
+<!-- UNIVERS 3 : ALIMENTATION -->
+<section class="section" id="alimentation">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Alimentation &amp; Boissons Énergie</h2>
+    <span class="subtitle">Fruileg &amp; Ecocircus</span>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Jus de fruits 100% naturels — Purs jus (Fruileg, 30cl)</div>
+    <div class="grid" id="grid-purs-jus"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Nectars de jus de fruits (Fruileg, 30cl)</div>
+    <div class="grid" id="grid-nectars"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Snacks &amp; amuse-bouches</div>
+    <div class="grid" id="grid-snacks"></div>
+  </div>
+  <div class="rayon">
+    <div class="rayon-title">Graines &amp; épices (Ecocircus)</div>
+    <div class="grid" id="grid-graines"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Services</h2>
+    <span class="subtitle">Accompagnement professionnel</span>
+  </div>
+  <div class="grid" id="grid-services" style="margin-top:28px;"></div>
+</section>
+
+<!-- CONTACT -->
+<div class="about-section" id="contact">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Contact</h2>
+      <span class="subtitle">Parlons de votre projet</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p><strong>AYI GROUP Distribution SARL</strong><br>Africa Youth Investment Group Distribution<br>« La clé des services d'investissement »</p>
+        <p>📍 Fougerolles, Yaoundé, Cameroun<br>📞 (+237) 695 162 019 / 675 537 110<br>✉️ ayigroup23@gmail.com</p>
+        <p class="legal">NIU : M072315970647Q · RCCM : RC/YAE/2023/B/2883 · Capital : 990 000 FCFA</p>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault(); showToast('✅ Message envoyé avec succès (démo)');">
+        <label class="sr-only" for="contact-name">Votre nom</label>
+        <input id="contact-name" type="text" name="name" placeholder="Votre nom" required>
+        <label class="sr-only" for="contact-email">Votre email</label>
+        <input id="contact-email" type="email" name="email" placeholder="Votre email" required>
+        <label class="sr-only" for="contact-msg">Votre message</label>
+        <textarea id="contact-msg" name="message" rows="4" placeholder="Votre message ou demande de devis"></textarea>
+        <button type="submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE DÉDIÉE PRODUIT -->
+<div id="product-detail">
+  <button class="back-link" onclick="backToCatalog()">← Retour au catalogue</button>
+  <div class="detail-grid">
+    <div class="detail-media-wrap">
+      <div class="detail-media" id="detail-media"></div>
+      <div class="detail-thumbs" id="detail-thumbs"></div>
+    </div>
+    <div class="detail-info">
+      <div class="detail-crumb" id="detail-crumb"></div>
+      <h1 id="detail-name"></h1>
+      <div class="detail-meta" id="detail-meta"></div>
+      <p class="detail-desc" id="detail-desc"></p>
+      <div class="detail-price-box" id="detail-price"></div>
+      <button class="detail-cta" id="detail-cta" onclick="">Ajouter à ma demande</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 <span>AYI GROUP DISTRIBUTION SARL</span> — RC/YAE/2023/B/2883 — YAOUNDÉ, CAMEROUN
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>🛒 Ma demande</h3>
+    <button onclick="closeDrawer()" aria-label="Fermer">×</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-foot">
+    <a href="#contact" class="btn btn-primary" style="display:flex;text-align:center;justify-content:center;"
+       onclick="closeDrawer(); showToast('📝 Complète le formulaire de contact pour envoyer ta demande')">
+      Demander un devis
+    </a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ──────────────────────────────────────────────
+//  DONNÉES PRODUITS
+// ──────────────────────────────────────────────
+const abroOrganic = [
+  {ref:'50001751', name:'ABRO Organic New Car', format:'42g'},
+  {ref:'50002486', name:'ABRO Organic Jasmine', format:'42g'},
+  {ref:'50002487', name:'ABRO Organic Vanilla', format:'42g'},
+  {ref:'50001754', name:'ABRO Organic Strawberry', format:'42g'},
+  {ref:'50001756', name:'ABRO Organic Coconut', format:'42g'},
+  {ref:'50047164', name:'ABRO Organic Watermelon', format:'42g'},
+  {ref:'50001758', name:'ABRO Organic Cool Breeze', format:'42g'},
+  {ref:'50001755', name:'ABRO Organic Ice', format:'42g'},
+  {ref:'50047034', name:'ABRO Organic Mocha Latte', format:'42g'},
+  {ref:'50001759', name:'ABRO Organic Cherry', format:'42g'},
+  {ref:'50001757', name:'ABRO Organic Bubble Gum', format:'42g'},
+  {ref:'50047033', name:'ABRO Organic Citrus Ice', format:'42g'},
+  {ref:'50047165', name:'ABRO Organic Watermelon Sugar', format:'42g'},
+].map(p => ({...p, price:'1 500 FCFA / unité', bulk:'Box de 12 : 18 000 FCFA', images:[]}));
+
+const carrosserie = [
+  {ref:'50000850', name:'Cire Auto ABRO Heavy Duty Silicone Cleaner Wax', format:'473 ml', price:'Prix à venir', bulk:null, images:[]},
+  {ref:'50060150', name:'Shampoing Auto ABRO Gold Premium', format:'946 ml', price:'Prix à venir', bulk:null, images:[]},
+  {ref:'50085590', name:'Cire Auto Pâte Super Gold Carnauba', format:'230 g', price:'Prix à venir', bulk:null, images:[]},
+  {ref:'50085630', name:'Cire Liquide Carnauba Car Wax', format:'500 ml', price:'Prix à venir', bulk:null, images:[]},
+  {ref:'50085750', name:'Nettoyant Universel ABRO Masters Clean All', format:'650 ml', price:'1 500 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085690', name:'Liquide de Frein ABRO Heavy Duty DOT4', format:'450 g', price:'Prix à venir', bulk:null, images:[]},
+];
+
+const dashboard = [
+  {ref:'50085500', name:'Rénovateur Tableau de Bord ABRO Vanilla', format:'220 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085510', name:'Rénovateur Tableau de Bord ABRO Lilac', format:'220 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'60137730', name:'Rénovateur ABRO Masters Strawberry', format:'220 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'90139380', name:'Rénovateur ABRO Masters Lemon', format:'220 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+];
+
+const parfums = [
+  {ref:'FT-014', name:'Godrej AER Twist Gel — Petal Crush Pink', format:"Gel d'ambiance", price:'5 000 FCFA / unité', bulk:null, images:['assets/aer-petal.jpg']},
+  {ref:'FT-015', name:'Godrej AER Power Pocket', format:'10g x 3 (paquet)', price:'2 500 FCFA / paquet', bulk:"900 FCFA le sachet à l'unité", images:['assets/aer-pocket.jpg']},
+  {ref:'50081210', name:"Spray d'Ambiance ABRO Masters Vanilla", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085730', name:"Spray d'Ambiance ABRO Strawberry", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085740', name:"Spray d'Ambiance ABRO Lemon-Citron", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50087200', name:"Spray d'Ambiance ABRO Lavender", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50088600', name:"Spray d'Ambiance ABRO Lilac", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50092000', name:"Spray d'Ambiance ABRO Green Apple", format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+];
+
+const entretienMaison = [
+  {ref:'50000858', name:'Amidon en Aérosol ABRO Spray Starch Fresh Linen', format:'430 g', price:'1 250 FCFA / unité', bulk:null, images:[]},
+  {ref:'50083280', name:'Désinfectant Toutes Surfaces ABRO Fresh Scent', format:'400 ml', price:'Prix à venir', bulk:null, images:[]},
+  {ref:'50085570', name:'Insecticide foudroyant ABRO Super Blast', format:'400 ml', price:'1 500 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085580', name:'Insecticide nomade ABRO Super Blast', format:'300 ml', price:'1 000 FCFA / unité', bulk:null, images:[]},
+  {ref:'50085720', name:'Nettoyant Fours & Grills ABRO Oven & Grill Cleaner', format:'283 g', price:'1 500 FCFA / unité', bulk:null, images:[]},
+  {ref:'50087190', name:'Rénovateur de Meubles ABRO Furniture Polish', format:'300 ml', price:'1 500 FCFA / unité', bulk:null, images:[]},
+];
+
+const pursJus = [
+  {ref:'FT-001', name:'Jus Pur Ananas Naturel', format:'30 cl', images:['assets/jus-groupe2.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-002', name:'Ananas-Cassimango', format:'30 cl', images:['assets/jus-groupe2.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-003', name:'Ananas-Passion', format:'30 cl', images:['assets/jus-groupe2.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-004', name:'Ananas-Gingembre Lemon', format:'30 cl', images:['assets/jus-ananas-gingembre.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-005', name:'Ananas-Mangue', format:'30 cl', images:['assets/jus-groupe3.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-006', name:'Ananas-Menthe', format:'30 cl', images:['assets/jus-groupe3.jpg','assets/fruileg-flyer.jpg']},
+].map(p => ({...p, price:'750 FCFA / unité', bulk:'Carton de 24 : 18 000 FCFA'}));
+
+const nectars = [
+  {ref:'FT-007', name:'Ananas-Betterave', format:'30 cl', images:['assets/jus-groupe1.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-008', name:'Ananas-Mandarine', format:'30 cl', images:['assets/jus-groupe1.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-009', name:'Ananas-Carotte', format:'30 cl', images:['assets/jus-groupe1.jpg','assets/fruileg-flyer.jpg']},
+  {ref:'FT-010', name:'Ananas-Goyave', format:'30 cl', images:['assets/jus-groupe1.jpg','assets/fruileg-flyer.jpg']},
+].map(p => ({...p, price:'750 FCFA / unité', bulk:'Carton de 24 : 18 000 FCFA'}));
+
+const snacks = [
+  {ref:'FT-011', name:'Chips de plantain', format:'35 g', price:'150 FCFA / unité', bulk:'Paquet de 25 : 3 750 FCFA', images:['assets/chips-plantain.jpg']},
+  {ref:'FT-012', name:'Chips de patate douce', format:'30 g', price:'150 FCFA / unité', bulk:'Paquet de 35 : 5 250 FCFA', images:[]},
+];
+
+const graines = [
+  {ref:'FT-013', name:'Graines de Chia (Ecocircus)', format:'80 g', price:'2 000 FCFA / unité', bulk:'Paquet de 10 sachets : 20 000 FCFA', images:['assets/chia.jpg']},
+];
+
+const services = [
+  {id:'s1', name:'Distribution', desc:'Distribution de produits de grande consommation auprès de points de vente et particuliers.'},
+  {id:'s2', name:'Commerce général & Négoce', desc:'Achat, vente et intermédiation commerciale sur divers types de produits.'},
+  {id:'s3', name:'Import - Export', desc:"Accompagnement dans vos opérations d'importation et d'exportation."},
+  {id:'s4', name:'Montage de projet', desc:"Accompagnement dans la structuration et le lancement de votre projet d'entreprise."},
+  {id:'s5', name:'Conseil en assurances', desc:"Orientation et conseil pour choisir les solutions d'assurance adaptées à vos besoins."},
+];
+
+// ──────────────────────────────────────────────
+//  RENDU DES CARTES
+// ──────────────────────────────────────────────
+function mediaHTML(item) {
+  const firstImg = item.images && item.images.length ? item.images[0] : null;
+  const badges = (item.ref ? `<span class="badge-ref">${item.ref}</span>` : '') +
+    (item.ref ? `<span class="badge-stock">En stock</span>` : '');
+  if (firstImg) {
+    return `<div class="card-media"><div class="card-badges">${badges}</div><img src="${firstImg}" alt="${item.name}" loading="lazy"></div>`;
+  }
+  return `<div class="card-media placeholder"><div class="card-badges">${badges}</div>Photo à venir</div>`;
+}
+
+function priceHTML(item) {
+  if (item.price === 'Prix à venir') {
+    return `<div class="price-wrap"><span class="tbd">Prix à venir</span></div>`;
+  }
+  return `<div class="price-wrap"><div class="price">${item.price}</div>${item.bulk ? `<div class="bulk">${item.bulk}</div>` : ''}</div>`;
+}
+
+function renderGrid(items, containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = items.map(p => `
+    <div class="card animate-in" data-brand="${p.brand || ''}" data-status="${p.price === 'Prix à venir' ? 'a-venir' : 'disponible'}" onclick="showProduct('${p.ref || p.id}')" style="animation-delay:${Math.random() * 0.15}s">
+      ${mediaHTML(p)}
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <span class="format">${p.format || ''}</span>
+        <div class="card-footer">
+          ${priceHTML(p)}
+          <button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.ref || p.id}')">+ Ajouter</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Assigner catégories et marques
+abroOrganic.forEach(p => { p.cat = 'Auto · Désodorisant organique'; p.brand = 'ABRO'; });
+carrosserie.forEach(p => { p.cat = 'Auto · Entretien châssis & carrosserie'; p.brand = 'ABRO'; });
+dashboard.forEach(p => { p.cat = 'Auto · Rénovateur tableau de bord'; p.brand = 'ABRO'; });
+parfums.forEach(p => { p.cat = "Maison · Parfum d'intérieur"; p.brand = p.ref.startsWith('FT-') ? 'Godrej AER' : 'ABRO'; });
+entretienMaison.forEach(p => { p.cat = 'Maison · Entretien & protection'; p.brand = 'ABRO'; });
+pursJus.forEach(p => { p.cat = 'Alimentation · Pur jus Fruileg'; p.brand = 'Fruileg'; });
+nectars.forEach(p => { p.cat = 'Alimentation · Nectar Fruileg'; p.brand = 'Fruileg'; });
+snacks.forEach(p => { p.cat = 'Alimentation · Snack'; p.brand = 'Fruileg'; });
+graines.forEach(p => { p.cat = 'Alimentation · Graines & épices'; p.brand = 'Ecocircus'; });
+
+// Rendu de toutes les grilles
+renderGrid(abroOrganic, 'grid-abro-organic');
+renderGrid(carrosserie, 'grid-carrosserie');
+renderGrid(dashboard, 'grid-dashboard');
+renderGrid(parfums, 'grid-parfums');
+renderGrid(entretienMaison, 'grid-entretien-maison');
+renderGrid(pursJus, 'grid-purs-jus');
+renderGrid(nectars, 'grid-nectars');
+renderGrid(snacks, 'grid-snacks');
+renderGrid(graines, 'grid-graines');
+
+document.getElementById('grid-services').innerHTML = services.map((s, i) => `
+  <div class="service-card animate-in" style="animation-delay:${i * 0.06}s">
+    <span class="num">0${i + 1}</span>
+    <h3>${s.name}</h3>
+    <p>${s.desc}</p>
+    <button class="add-btn" onclick="addToCart('${s.id}')">Demander ce service</button>
+  </div>
+`).join('');
+
+// ──────────────────────────────────────────────
+//  PANIER
+// ──────────────────────────────────────────────
+const allItems = [...abroOrganic, ...carrosserie, ...dashboard, ...parfums, ...entretienMaison, ...pursJus, ...nectars, ...snacks, ...graines, ...services.map(s => ({...s, ref: s.id}))];
+let cart = [];
+
+function addToCart(ref) {
+  const item = allItems.find(i => (i.ref || i.id) === ref);
+  if (!item) return;
+  cart.push({...item});
+  updateCart();
+  showToast(`✓ ${item.name} ajouté à votre demande`);
+}
+
+function removeFromCart(index) { cart.splice(index, 1); updateCart(); }
+
+function updateCart() {
+  document.getElementById('cart-count').textContent = cart.length;
+  const itemsEl = document.getElementById('drawer-items');
+  if (cart.length === 0) {
+    itemsEl.innerHTML = '<div class="drawer-empty">Votre liste de demande est vide.</div>';
+  } else {
+    itemsEl.innerHTML = cart.map((item, i) =>
+      `<div class="drawer-item"><span>${item.name}</span><button class="rm" onclick="event.stopPropagation();removeFromCart(${i})">Retirer</button></div>`
+    ).join('');
+  }
+}
+updateCart();
+
+function openDrawer() { document.getElementById('drawer').classList.add('open'); document.getElementById('overlay').classList.add('open'); }
+function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('overlay').classList.remove('open'); }
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._timeout); t._timeout = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ──────────────────────────────────────────────
+//  FILTRES
+// ──────────────────────────────────────────────
+const activeFilters = { brand: 'all', status: 'all' };
+
+function applyFilters() {
+  let visibleCount = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const brand = card.getAttribute('data-brand') || '';
+    const status = card.getAttribute('data-status') || '';
+    const brandOk = activeFilters.brand === 'all' || brand === activeFilters.brand;
+    const statusOk = activeFilters.status === 'all' || status === activeFilters.status;
+    const show = brandOk && statusOk;
+    card.classList.toggle('filtered-out', !show);
+    if (show) visibleCount++;
+  });
+  document.querySelectorAll('.rayon').forEach(rayon => {
+    const anyVisible = rayon.querySelectorAll('.card:not(.filtered-out)').length > 0;
+    rayon.classList.toggle('filtered-empty', !anyVisible);
+  });
+  const countEl = document.getElementById('filter-count');
+  if (countEl) countEl.textContent = `${visibleCount} article(s)`;
+}
+applyFilters();
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.getAttribute('data-type');
+    const value = btn.getAttribute('data-value');
+    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilters[type] = value;
+    applyFilters();
+  });
+});
+
+// ──────────────────────────────────────────────
+//  SCROLL SPY POUR NAV ACTIVE
+// ──────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id], .about-section[id]');
+const tabLinks = document.querySelectorAll('#tabs a');
+window.addEventListener('scroll', () => {
+  if (document.getElementById('product-detail').style.display === 'block') return;
+  let current = '';
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top <= 140 && rect.bottom >= 140) current = sec.id;
+  });
+  tabLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+
+  // Shadow on header when scrolled
+  const header = document.getElementById('main-header');
+  if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ──────────────────────────────────────────────
+//  FICHE PRODUIT
+// ──────────────────────────────────────────────
+const genericDesc = {
+  "Auto · Désodorisant organique": "Désodorisant voiture en canette, à base d'ingrédients organiques, pour une odeur fraîche et durable dans l'habitacle. Distribué par AYI Group.",
+  'Auto · Entretien châssis & carrosserie': "Produit d'entretien professionnel pour la carrosserie et le châssis, à utiliser selon les instructions du fabricant ABRO. Distribué par AYI Group.",
+  'Auto · Rénovateur tableau de bord': 'Rénovateur et protecteur pour tableau de bord et surfaces plastiques intérieures, finition mate ou brillante selon usage. Distribué par AYI Group.',
+  "Maison · Parfum d'intérieur": "Parfum d'ambiance pour la maison ou la voiture, diffusion longue durée. Distribué par AYI Group.",
+  'Maison · Entretien & protection': "Produit d'entretien et de protection pour la maison, gamme ABRO. Distribué par AYI Group.",
+  'Alimentation · Pur jus Fruileg': 'Pur jus de fruits 100% naturel, pasteurisé, sans eau ajoutée, sans conservateurs ni colorants chimiques. Marque Fruileg, distribué par AYI Group.',
+  'Alimentation · Nectar Fruileg': 'Nectar de fruits et légumes pressés, marque Fruileg, distribué par AYI Group.',
+  'Alimentation · Snack': "Snack croustillant, friture à l'huile végétale. Distribué par AYI Group.",
+  'Alimentation · Graines & épices': 'Graines de chia 100% bio : facilite la digestion, aide à réguler le cholestérol et la tension, riche en fibres. Produit du Cameroun (Ecocircus), distribué par AYI Group.',
+};
+
+function showProduct(ref) {
+  const item = allItems.find(i => (i.ref || i.id) === ref);
+  if (!item) return;
+
+  document.getElementById('detail-crumb').textContent = item.cat || 'Service';
+  document.getElementById('detail-name').textContent = item.name;
+  document.getElementById('detail-desc').textContent = item.desc || genericDesc[item.cat] || 'Description à venir.';
+
+  const media = document.getElementById('detail-media');
+  const thumbsWrap = document.getElementById('detail-thumbs');
+  const images = item.images && item.images.length ? item.images : [];
+  if (images.length) {
+    media.classList.remove('placeholder');
+    media.innerHTML = `<img src="${images[0]}" alt="${item.name}" id="detail-main-img">`;
+    thumbsWrap.innerHTML = images.length > 1
+      ? images.map((src, i) => `<img src="${src}" class="thumb ${i === 0 ? 'active' : ''}" onclick="setMainImage(${i})" loading="lazy">`).join('')
+      : '';
+    window.currentGalleryImages = images;
+  } else {
+    media.classList.add('placeholder');
+    media.textContent = 'Photo à venir';
+    thumbsWrap.innerHTML = '';
+    window.currentGalleryImages = [];
+  }
+
+  const meta = document.getElementById('detail-meta');
+  meta.innerHTML = [
+    item.ref ? `<span>Réf. ${item.ref}</span>` : '',
+    item.format ? `<span>${item.format}</span>` : '',
+    item.ref ? `<span class="stock">En stock</span>` : ''
+  ].join('');
+
+  const priceBox = document.getElementById('detail-price');
+  if (item.price === 'Prix à venir' || !item.price) {
+    priceBox.innerHTML = '<span class="tbd">Prix à venir — nous contacter</span>';
+  } else {
+    priceBox.innerHTML = `<div class="unit">${item.price}</div>${item.bulk ? `<div class="bulk">${item.bulk}</div>` : ''}`;
+  }
+
+  document.getElementById('detail-cta').onclick = () => addToCart(ref);
+
+  document.querySelectorAll('.section, .hero, .stats-bar, .filter-bar, .about-section').forEach(s => s.style.display = 'none');
+  document.getElementById('product-detail').style.display = 'block';
+  window.scrollTo(0, 0);
+  history.pushState(null, '', '#produit-' + ref);
+}
+
+function setMainImage(index) {
+  const images = window.currentGalleryImages || [];
+  if (!images[index]) return;
+  document.getElementById('detail-main-img').src = images[index];
+  document.querySelectorAll('.thumb').forEach((t, i) => t.classList.toggle('active', i === index));
+}
+
+function showCatalogueSections() {
+  document.getElementById('product-detail').style.display = 'none';
+  document.querySelectorAll('.section, .hero, .stats-bar, .filter-bar, .about-section').forEach(s => s.style.display = '');
+}
+
+function backToCatalog() {
+  showCatalogueSections();
+  history.pushState(null, '', '#home');
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('hashchange', () => {
+  if (!location.hash.startsWith('#produit-')) showCatalogueSections();
+});
+
+window.addEventListener('load', () => {
+  // Dynamically set filter bar sticky offset based on actual header height
+  const header = document.getElementById('main-header');
+  if (header) {
+    const updateHeaderHeight = () => {
+      document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    };
+    updateHeaderHeight();
+    window.addEventListener('resize', updateHeaderHeight);
+  }
+
+  const hash = location.hash;
+  if (hash.startsWith('#produit-')) showProduct(hash.replace('#produit-', ''));
+});
+</script>
+
+</body>
+</html>
