@@ -304,12 +304,12 @@ function initScrollSpy() {
   // Highlight current page tab
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const pageMap = {
-    'index.html': 'index.html',
-    'auto.html': 'auto.html',
-    'maison.html': 'maison.html',
-    'alimentation.html': 'alimentation.html',
-    'services.html': 'services.html',
-    'contact.html': 'contact.html',
+    'index.html': 'index.html#produits',
+    'auto.html': 'index.html#produits',
+    'maison.html': 'index.html#produits',
+    'alimentation.html': 'index.html#produits',
+    'services.html': 'index.html#services',
+    'contact.html': 'index.html#contact',
   };
   const activeHref = pageMap[currentPath] || pageMap['index.html'];
   tabLinks.forEach(a => {
