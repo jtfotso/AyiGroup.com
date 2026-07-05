@@ -85,10 +85,21 @@ const graines = [
 const services = [
   {id:'s1', name:'Distribution', desc:'Distribution de produits de grande consommation auprès de points de vente et particuliers.'},
   {id:'s2', name:'Commerce général & Négoce', desc:'Achat, vente et intermédiation commerciale sur divers types de produits.'},
-  {id:'s3', name:'Import - Export', desc:"Accompagnement dans vos opérations d'importation et d'exportation."},
-  {id:'s4', name:'Montage de projet', desc:"Accompagnement dans la structuration et le lancement de votre projet d'entreprise."},
-  {id:'s5', name:'Conseil en assurances', desc:"Orientation et conseil pour choisir les solutions d'assurance adaptées à vos besoins."},
+  {id:'s3', name:'Conseil en investissement', desc:'Analyse et recommandations pour optimiser vos placements et vos décisions financières.'},
+  {id:'s4', name:"Étude de projet & Business Plan", desc:"Accompagnement dans la structuration, l'étude de faisabilité, et le plan d'affaires de votre projet."},
+  {id:'s5', name:'Import - Export', desc:"Accompagnement dans vos opérations d'importation et d'exportation."},
+  {id:'s6', name:'Conseil en assurances', desc:"Orientation et conseil pour choisir les solutions d'assurance adaptées à vos besoins."},
+  {id:'s7', name:'Conseil en investissement financier', desc:"Stratégies de placement, analyse de portefeuille et optimisation de vos ressources financières."},
 ];
+
+const solarKits = {
+  id:'sk', name:'Kits Solaires', desc:'Fourniture et accompagnement complet pour vos projets d\'énergie solaire.',
+  subs: [
+    {id:'sk1', name:'Consultation', desc:'Audit énergétique, dimensionnement et conseil pour choisir la solution solaire adaptée à vos besoins.'},
+    {id:'sk2', name:'Installation', desc:'Mise en place professionnelle de vos panneaux solaires et équipements par des techniciens qualifiés.'},
+    {id:'sk3', name:'Maintenance', desc:'Suivi régulier, nettoyage et entretien de votre installation solaire pour des performances optimales.'},
+  ]
+};
 
 // Assigner catégories et marques
 abroOrganic.forEach(p => { p.cat = 'Auto · Désodorisant organique'; p.brand = 'ABRO'; });
@@ -171,21 +182,55 @@ function renderAllGrids() {
 
   const svcEl = document.getElementById('grid-services');
   if (svcEl) {
-    svcEl.innerHTML = services.map((s, i) => `
-      <div class="service-card animate-in" style="animation-delay:${i * 0.06}s">
-        <span class="num">0${i + 1}</span>
-        <h3>${s.name}</h3>
-        <p>${s.desc}</p>
-        <button class="add-btn" onclick="addToCart('${s.id}')">Demander ce service</button>
-      </div>
-    `).join('');
+    svcEl.innerHTML = renderServiceCards();
   }
+
+  // Homepage services section
+  var hpSvcEl = document.getElementById('home-services');
+  if (hpSvcEl) {
+    hpSvcEl.innerHTML = renderServiceCards();
+  }
+}
+
+function renderServiceCards() {
+  var html = services.map((s, i) => `
+    <div class="service-card animate-in" style="animation-delay:${i * 0.06}s">
+      <span class="num">0${i + 1}</span>
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+      <button class="add-btn" onclick="addToCart('${s.id}')">Demander ce service</button>
+    </div>
+  `).join('');
+
+  // Solar Kits card with sub-services
+  html += `
+    <div class="service-card service-card-featured animate-in" style="animation-delay:${services.length * 0.06}s">
+      <span class="num">0${services.length + 1}</span>
+      <h3>${solarKits.name}</h3>
+      <p>${solarKits.desc}</p>
+      <button class="add-btn" onclick="addToCart('${solarKits.id}')">Demander ce service</button>
+      <div class="solar-subs">
+        ${solarKits.subs.map((sub, j) => `
+          <div class="solar-sub">
+            <span class="solar-sub-icon">☀️</span>
+            <div>
+              <strong>${sub.name}</strong>
+              <p>${sub.desc}</p>
+            </div>
+            <button class="add-btn add-btn-sm" onclick="event.stopPropagation(); addToCart('${sub.id}')">+</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+
+  return html;
 }
 
 // ──────────────────────────────────────────────
 //  PANIER (persisted in localStorage)
 // ──────────────────────────────────────────────
-const allItems = [...abroOrganic, ...carrosserie, ...dashboard, ...parfums, ...entretienMaison, ...pursJus, ...nectars, ...snacks, ...graines, ...services.map(s => ({...s, ref: s.id}))];
+var solarKitItems = solarKits.subs.map(function(sub) { return { id: sub.id, ref: sub.id, name: solarKits.name + ' — ' + sub.name, desc: sub.desc, cat: 'Services · Kits Solaires' }; });
+const allItems = [...abroOrganic, ...carrosserie, ...dashboard, ...parfums, ...entretienMaison, ...pursJus, ...nectars, ...snacks, ...graines, ...services.map(s => ({...s, ref: s.id})), {id: solarKits.id, ref: solarKits.id, name: solarKits.name, desc: solarKits.desc, cat: 'Services · Kits Solaires'}, ...solarKitItems];
 let cart = JSON.parse(localStorage.getItem('ayi_cart') || '[]');
 
 function saveCart() { localStorage.setItem('ayi_cart', JSON.stringify(cart)); }

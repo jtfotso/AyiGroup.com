@@ -344,6 +344,53 @@ nav.tabs a.active { background: var(--navy); color: white; box-shadow: 0 2px 8px
 }
 .service-card .add-btn:hover { background: var(--emerald-light); color: var(--navy); }
 
+/* Service card — featured (Solar Kits) */
+.service-card-featured {
+  grid-column: 1 / -1;
+  border: 2px solid rgba(200, 144, 58, 0.4);
+  background: linear-gradient(145deg, var(--navy-light), var(--navy));
+}
+
+/* Solar Kits sub-services */
+.solar-subs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.solar-sub {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  transition: background var(--transition);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.solar-sub:hover { background: rgba(255,255,255,0.1); }
+.solar-sub-icon {
+  font-size: 1.2rem; flex-shrink: 0;
+  margin-top: 2px;
+}
+.solar-sub div { flex: 1; min-width: 0; }
+.solar-sub strong {
+  display: block; color: var(--emerald-light);
+  font-size: 0.88rem; font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 2px;
+}
+.solar-sub p {
+  margin: 0; color: rgba(255,255,255,0.55);
+  font-size: 0.78rem; line-height: 1.5;
+}
+.add-btn-sm {
+  padding: 6px 10px !important;
+  font-size: 0.75rem !important;
+  min-width: 34px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
 /* ---- ABOUT/CONTACT ---- */
 .about-section {
   background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);

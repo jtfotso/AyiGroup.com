@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AYI Group Distribution SARL — Accueil</title>
-<meta name="description" content="AYI Group Distribution SARL — Votre partenaire commercial fiable au Cameroun. Distribution de produits auto, parfumerie, alimentation et services.">
+<meta name="description" content="AYI Group Distribution SARL — Votre partenaire commercial fiable au Cameroun. Produits alimentaires, parfumerie & maison, auto, et services professionnels.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -32,14 +32,15 @@
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div>
     <span class="eyebrow">AYI Group Distribution SARL · Yaoundé, Cameroun</span>
     <h1>Votre partenaire commercial fiable, du rayon auto à votre table</h1>
-    <p>Prestations, distribution, commerce général, négoce, import‑export&nbsp;: AYI&nbsp;Group distribue des produits d'entretien auto, de parfumerie, d'alimentation, et accompagne les entreprises avec ses services de conseil.</p>
+    <p>Prestations, distribution, commerce général, négoce, import‑export&nbsp;: AYI&nbsp;Group distribue des produits alimentaires, d'entretien auto, de parfumerie, et accompagne les entreprises avec ses services de conseil.</p>
     <div class="hero-actions">
-      <a href="alimentation.html" class="btn btn-primary">Découvrir le catalogue →</a>
-      <a href="contact.html" class="btn btn-outline">Nous contacter</a>
+      <a href="#produits" class="btn btn-primary">Découvrir nos produits ↓</a>
+      <a href="#contact" class="btn btn-outline">Nous contacter</a>
     </div>
   </div>
   <div class="ledger-card">
@@ -55,46 +56,82 @@
   <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Produits au catalogue</span></div>
   <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Marques distribuées</span></div>
   <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Univers produits</span></div>
-  <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">Services disponibles</span></div>
+  <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Services disponibles</span></div>
 </div>
 
-<div class="page-section cat-grid-wrap">
+<!-- PRODUITS SECTION -->
+<section class="page-section" id="produits">
   <div class="section-header">
     <span class="section-num">✦</span>
-    <h2>Nos univers produits</h2>
+    <h2>Nos produits</h2>
     <span class="subtitle">Choisissez une catégorie</span>
   </div>
   <div class="cat-grid" style="margin-top:24px;">
-    <a href="auto.html" class="cat-card animate-in" style="animation-delay:0s">
-      <div class="cat-icon">🔧</div>
+    <a href="alimentation.html" class="cat-card animate-in" style="animation-delay:0s">
+      <div class="cat-icon">🥤</div>
       <div class="cat-content">
-        <h3>Entretien &amp; Accessoires Auto</h3>
-        <p>Désodorisants, cires, shampoings, rénovateurs — gamme ABRO</p>
+        <h3>Food</h3>
+        <p>Jus purs, nectars, snacks, graines — Fruileg &amp; Ecocircus</p>
       </div>
     </a>
     <a href="maison.html" class="cat-card animate-in" style="animation-delay:0.06s">
       <div class="cat-icon">🏠</div>
       <div class="cat-content">
-        <h3>Parfumerie &amp; Maison</h3>
+        <h3>Parfumerie &amp; Home</h3>
         <p>Parfums d'intérieur, sprays, insecticides, entretien — Godrej AER &amp; ABRO</p>
       </div>
     </a>
-    <a href="alimentation.html" class="cat-card animate-in" style="animation-delay:0.12s">
-      <div class="cat-icon">🥤</div>
+    <a href="auto.html" class="cat-card animate-in" style="animation-delay:0.12s">
+      <div class="cat-icon">🔧</div>
       <div class="cat-content">
-        <h3>Alimentation &amp; Boissons</h3>
-        <p>Jus purs, nectars, snacks, graines — Fruileg &amp; Ecocircus</p>
-      </div>
-    </a>
-    <a href="services.html" class="cat-card animate-in" style="animation-delay:0.18s">
-      <div class="cat-icon">🤝</div>
-      <div class="cat-content">
-        <h3>Services</h3>
-        <p>Distribution, négoce, import-export, montage de projet, conseil</p>
+        <h3>Auto</h3>
+        <p>Désodorisants, cires, shampoings, rénovateurs — gamme ABRO</p>
       </div>
     </a>
   </div>
-</div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="page-section" id="services">
+  <div class="section-header">
+    <span class="section-num">✦</span>
+    <h2>Nos services</h2>
+    <span class="subtitle">Accompagnement professionnel</span>
+  </div>
+  <div class="grid" id="home-services" style="margin-top:24px;"></div>
+  <div style="text-align:center;margin-top:32px;">
+    <a href="services.html" class="btn btn-outline">Voir tous les services →</a>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="page-section" id="contact">
+  <div class="section-header">
+    <span class="section-num">✦</span>
+    <h2>Contact</h2>
+    <span class="subtitle">Parlons de votre projet</span>
+  </div>
+  <div class="about-section" style="margin:24px 0 0;">
+    <div class="page-section" style="padding:40px 28px;">
+      <div class="about-grid">
+        <div>
+          <p><strong>AYI GROUP Distribution SARL</strong><br>Africa Youth Investment Group Distribution<br>« La clé des services d'investissement »</p>
+          <p>📍 Fougerolles, Yaoundé, Cameroun<br>📞 (+237) 695 162 019 / 675 537 110<br>✉️ ayigroup23@gmail.com</p>
+          <p class="legal">NIU : M072315970647Q · RCCM : RC/YAE/2023/B/2883 · Capital : 990 000 FCFA</p>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); showToast('✅ Message envoyé avec succès (démo)');">
+          <label class="sr-only" for="contact-name">Votre nom</label>
+          <input id="contact-name" type="text" name="name" placeholder="Votre nom" required>
+          <label class="sr-only" for="contact-email">Votre email</label>
+          <input id="contact-email" type="email" name="email" placeholder="Votre email" required>
+          <label class="sr-only" for="contact-msg">Votre message</label>
+          <textarea id="contact-msg" name="message" rows="4" placeholder="Votre message ou demande de devis"></textarea>
+          <button type="submit">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PRODUCT DETAIL -->
 <div id="product-detail">
