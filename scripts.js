@@ -130,6 +130,40 @@ graines.forEach(p => { p.cat = 'Alimentation · Graines & épices'; p.brand = 'E
 ebooks.forEach(p => { p.cat = 'e-Book · Produits numériques'; p.brand = 'AYI Group'; });
 
 // ──────────────────────────────────────────────
+//  E-BOOK COVER GENERATOR
+// ──────────────────────────────────────────────
+var ebookCoverColors = { 'Guide': { bg: '#0A2540', accent: '#2D8A4E', text: '#FFFFFF' }, 'E-Book': { bg: '#1F6B38', accent: '#C8903A', text: '#FFFFFF' }, 'Template': { bg: '#4A2C2A', accent: '#D4645C', text: '#FFFFFF' } };
+function ebookCoverSVG(item) {
+  var type = item.formatType || 'Guide';
+  var c = ebookCoverColors[type] || ebookCoverColors['Guide'];
+  var title = item.name || '';
+  // Clean up title for display
+  var displayTitle = title.replace(/(Guide|E-Book|Template) — /, '').substring(0, 40);
+  var lines = [];
+  if (displayTitle.length > 22) {
+    var mid = displayTitle.lastIndexOf(' ', 22);
+    if (mid < 8) mid = 22;
+    lines = [displayTitle.substring(0, mid), displayTitle.substring(mid + 1)];
+  } else {
+    lines = [displayTitle];
+  }
+  var textEls = lines.map(function(l, i) {
+    return '<text x="130" y="' + (82 + i * 22) + '" text-anchor="middle" font-family="&#39;Space Grotesk&#39;,sans-serif" font-weight="600" font-size="11" fill="' + c.text + '" opacity="0.9">' + l.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</text>';
+  }).join('');
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 160" width="260" height="160">' +
+    '<rect width="260" height="160" rx="8" fill="' + c.bg + '"/>' +
+    '<rect x="12" y="12" width="236" height="136" rx="4" fill="none" stroke="' + c.accent + '" stroke-width="1" opacity="0.3"/>' +
+    '<rect x="0" y="0" width="6" height="160" fill="' + c.accent + '" opacity="0.5"/>' +
+    '<rect x="18" y="24" width="50" height="18" rx="9" fill="' + c.accent + '" opacity="0.85"/>' +
+    '<text x="43" y="37" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;,monospace" font-weight="600" font-size="7" fill="' + c.bg + '">' + type.toUpperCase() + '</text>' +
+    textEls +
+    '<rect x="18" y="112" width="224" height="3" rx="1.5" fill="' + c.accent + '" opacity="0.3"/>' +
+    '<text x="130" y="142" text-anchor="middle" font-family="&#39;JetBrains Mono&#39;,monospace" font-size="6.5" fill="' + c.text + '" opacity="0.4">AYI GROUP ÉDITIONS</text>' +
+    '</svg>';
+  return 'data:image/svg+xml,' + encodeURIComponent(svg);
+}
+
+// ──────────────────────────────────────────────
 //  SVG PLACEHOLDERS PAR CATÉGORIE
 // ──────────────────────────────────────────────
 function placeholderSVG(cat) {
@@ -154,8 +188,12 @@ function placeholderSVG(cat) {
 }
 
 function mediaHTML(item) {
-  const firstImg = item.images && item.images.length ? item.images[0] : null;
-  const badges = (item.ref ? '<span class="badge-ref">' + item.ref + '</span>' : '') +
+  var firstImg = item.images && item.images.length ? item.images[0] : null;
+  // Generate ebook cover for digital products
+  if (!firstImg && item.formatType) {
+    firstImg = ebookCoverSVG(item);
+  }
+  var badges = (item.ref ? '<span class="badge-ref">' + item.ref + '</span>' : '') +
     (item.ref ? '<span class="badge-stock">En stock</span>' : '');
   if (firstImg) {
     return '<div class="card-media"><div class="card-badges">' + badges + '</div><img src="' + firstImg + '" alt="' + item.name + '" loading="lazy"></div>';
@@ -383,6 +421,15 @@ function showProduct(ref) {
       ? images.map((src, i) => '<img src="' + src + '" class="thumb ' + (i === 0 ? 'active' : '') + '" onclick="setMainImage(' + i + ')" loading="lazy">').join('')
       : '';
     window.currentGalleryImages = images;
+  } else if (item.formatType) {
+    // E-book cover for detail view
+    var coverSrc = ebookCoverSVG(item);
+    var coverBg = ebookCoverColors[item.formatType] ? ebookCoverColors[item.formatType].bg : '#0A2540';
+    var safeName = item.name.replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+    media.classList.remove('placeholder');
+    media.innerHTML = '<img src="' + coverSrc + '" alt="' + safeName + '" id="detail-main-img" style="width:100%;height:100%;object-fit:contain;padding:20px;background:' + coverBg + ';">';
+    thumbsWrap.innerHTML = '';
+    window.currentGalleryImages = [coverSrc];
   } else {
     media.classList.add('placeholder');
     media.innerHTML = placeholderSVG(item.cat || '');
