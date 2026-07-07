@@ -200,6 +200,7 @@ nav.tabs a.active { background: var(--navy); color: white; box-shadow: 0 2px 8px
 .cat-card:nth-child(2) .cat-icon { background: rgba(200,144,58,0.12); color: var(--gold); }
 .cat-card:nth-child(3) .cat-icon { background: rgba(10,37,64,0.06); color: var(--navy); }
 .cat-card:nth-child(4) .cat-icon { background: rgba(212,100,92,0.10); color: var(--rose); }
+.cat-card:nth-child(5) .cat-icon { background: rgba(45,138,78,0.10); color: var(--emerald-dark); }
 .cat-content h3 { font-size: 1rem; margin: 0 0 4px; color: var(--navy); }
 .cat-content p { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
 

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-Book &amp; Produits Numériques — AYI Group</title>
+<meta name="description" content="Guides, e-books et templates professionnels — produits numériques téléchargeables édités par AYI Group SARL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%230A2540%27/%3E%3Ctext x=%2716%27 y=%2723%27 text-anchor=%27middle%27 font-family=%27sans-serif%27 font-weight=%27bold%27 font-size=%2717%27 fill=%27%232D8A4E%27%3EAY%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header id="main-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-logo"><img src="logo/logo.jpeg" alt="AYI Group logo" onerror="logoFallback(this)"></div>
+      <span class="brand-text"><strong>AYI GROUP</strong><span>SARL</span></span>
+    </a>
+    <nav class="tabs" id="tabs">
+      <a href="index.html#produits">Produits</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#contact">Contacts</a>
+    </nav>
+    <button class="cart-btn" onclick="openDrawer()" aria-label="Voir ma demande">
+      📋 Ma demande <span class="badge" id="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="category-hero">
+  <span class="section-num">📚</span>
+  <h1>e-Book &amp; Produits Numériques</h1>
+  <p>Guides pratiques, e-books et templates professionnels — téléchargement immédiat après commande. Tous nos produits numériques sont livrés par email.</p>
+</div>
+
+<div class="filter-bar" id="filter-bar">
+  <div class="filter-group">
+    <span class="filter-label">Type</span>
+    <button class="filter-btn active" data-type="format" data-value="all">Tous</button>
+    <button class="filter-btn" data-type="format" data-value="Guide">Guides</button>
+    <button class="filter-btn" data-type="format" data-value="E-Book">E-Books</button>
+    <button class="filter-btn" data-type="format" data-value="Template">Templates</button>
+  </div>
+  <span class="filter-count" id="filter-count"></span>
+</div>
+
+<section class="page-section">
+  <div class="rayon">
+    <div class="rayon-title">📖 Guides &amp; E-Books</div>
+    <div class="grid" id="grid-ebooks"></div>
+  </div>
+</section>
+
+<!-- PRODUCT DETAIL -->
+<div id="product-detail">
+  <button class="back-link" onclick="backToCatalog()">← Retour au catalogue</button>
+  <div class="detail-grid">
+    <div class="detail-media-wrap">
+      <div class="detail-media" id="detail-media"></div>
+      <div class="detail-thumbs" id="detail-thumbs"></div>
+    </div>
+    <div class="detail-info">
+      <div class="detail-crumb" id="detail-crumb"></div>
+      <h1 id="detail-name"></h1>
+      <div class="detail-meta" id="detail-meta"></div>
+      <p class="detail-desc" id="detail-desc"></p>
+      <div class="detail-price-box" id="detail-price"></div>
+      <button class="detail-cta" id="detail-cta">Ajouter à ma demande</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 <span>AYI GROUP SARL</span> — RC/YAE/2023/B/2883 — YAOUNDÉ, CAMEROUN
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>🛒 Ma demande</h3>
+    <button onclick="closeDrawer()" aria-label="Fermer">×</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-foot">
+    <a href="contact.html" class="btn btn-primary" style="display:flex;text-align:center;justify-content:center;"
+       onclick="closeDrawer(); showToast('📝 Complète le formulaire de contact pour envoyer ta demande')">
+      Demander un devis
+    </a>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

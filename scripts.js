@@ -82,6 +82,21 @@ const graines = [
   {ref:'FT-013', name:'Graines de Chia (Ecocircus)', format:'80 g', price:'2 000 FCFA / unité', bulk:'Paquet de 10 sachets : 20 000 FCFA', images:['assets/chia.jpg']},
 ];
 
+const ebooks = [
+  {ref:'EB-001', name:'Guide Pratique — Investir au Cameroun', format:'PDF · 45 pages', price:'5 000 FCFA', bulk:null, images:[], formatType:'Guide'},
+  {ref:'EB-002', name:'Guide — Créer son Business Plan', format:'PDF · 32 pages', price:'4 000 FCFA', bulk:null, images:[], formatType:'Guide'},
+  {ref:'EB-003', name:'Guide — Fiscalité des PME au Cameroun', format:'PDF · 28 pages', price:'4 500 FCFA', bulk:null, images:[], formatType:'Guide'},
+  {ref:'EB-004', name:'E-Book — Les Clés de l\'Import-Export', format:'PDF · 60 pages', price:'7 500 FCFA', bulk:null, images:[], formatType:'E-Book'},
+  {ref:'EB-005', name:'E-Book — Stratégies de Distribution', format:'PDF · 38 pages', price:'5 500 FCFA', bulk:null, images:[], formatType:'E-Book'},
+  {ref:'EB-006', name:'Template — Modèle de Business Plan', format:'Excel + Word', price:'3 500 FCFA', bulk:null, images:[], formatType:'Template'},
+  {ref:'EB-007', name:'Template — Facture et Devis Professionnels', format:'Excel', price:'2 000 FCFA', bulk:null, images:[], formatType:'Template'},
+  {ref:'EB-008', name:'Guide — Marketing Digital pour PME', format:'PDF · 42 pages', price:'4 500 FCFA', bulk:null, images:[], formatType:'Guide'},
+  {ref:'EB-009', name:'E-Book — Agriculture et Agroalimentaire', format:'PDF · 55 pages', price:'6 000 FCFA', bulk:null, images:[], formatType:'E-Book'},
+  {ref:'EB-010', name:'Guide — Comptabilité Simplifiée', format:'PDF · 30 pages', price:'3 500 FCFA', bulk:null, images:[], formatType:'Guide'},
+  {ref:'EB-011', name:'Template — Suivi de Trésorerie', format:'Excel', price:'2 500 FCFA', bulk:null, images:[], formatType:'Template'},
+  {ref:'EB-012', name:'Guide — Création d\'Entreprise au Cameroun', format:'PDF · 50 pages', price:'5 500 FCFA', bulk:'Pack guides création : 12 000 FCFA (EB-002 + EB-003 + EB-012)', images:[], formatType:'Guide'},
+];
+
 const services = [
   {id:'s1', name:'Distribution', desc:'Distribution de produits de grande consommation auprès de points de vente et particuliers.'},
   {id:'s2', name:'Commerce général & Négoce', desc:'Achat, vente et intermédiation commerciale sur divers types de produits.'},
@@ -111,6 +126,7 @@ pursJus.forEach(p => { p.cat = 'Alimentation · Pur jus Fruileg'; p.brand = 'Fru
 nectars.forEach(p => { p.cat = 'Alimentation · Nectar Fruileg'; p.brand = 'Fruileg'; });
 snacks.forEach(p => { p.cat = 'Alimentation · Snack'; p.brand = 'Fruileg'; });
 graines.forEach(p => { p.cat = 'Alimentation · Graines & épices'; p.brand = 'Ecocircus'; });
+ebooks.forEach(p => { p.cat = 'e-Book · Produits numériques'; p.brand = 'AYI Group'; });
 
 // ──────────────────────────────────────────────
 //  SVG PLACEHOLDERS PAR CATÉGORIE
@@ -120,6 +136,9 @@ function placeholderSVG(cat) {
   if (cat.indexOf('Auto') === 0) {
     // Car/steering wheel — navy & emerald
     svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><rect x="10" y="35" width="180" height="85" rx="22" fill="#0A2540"/><rect x="40" y="50" width="120" height="55" rx="10" fill="#FAF8F5" opacity="0.3"/><circle cx="55" cy="120" r="16" fill="#0A2540"/><circle cx="145" cy="120" r="16" fill="#0A2540"/><rect x="78" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/><rect x="95" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/><rect x="112" y="8" width="8" height="28" rx="4" fill="#2D8A4E"/></svg>';
+  } else if (cat.indexOf('e-Book') === 0) {
+    // Book with pages — rose & navy
+    svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><path d="M30 10h90v115H45a15 15 0 0 1-15-15V10z" fill="#0A2540"/><path d="M120 10h50v115h-50V10z" fill="#D4645C" opacity="0.7"/><path d="M40 20h70v8" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M40 36h70v8" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M40 52h70v8" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M40 68h55v8" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M130 20h30v7" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M130 36h30v7" stroke="#FAF8F5" stroke-width="3" opacity="0.3"/><path d="M20 10h30v115H45a15 15 0 0 1-25-15V10z" fill="#2D8A4E" opacity="0.5"/><rect x="20" y="15" width="6" height="25" rx="3" fill="#FAF8F5" opacity="0.25"/></svg>';
   } else if (cat.indexOf('Maison') === 0) {
     // Home + spray — emerald & gold
     svg = '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:80px;height:56px;opacity:0.35"><path d="M100 8L10 70v62h70V98h40v34h70V70L100 8z" fill="#2D8A4E" opacity="0.6"/><path d="M100 8L10 70v62h70V98h40v34h70V70L100 8z" fill="#0A2540"/><rect x="65" y="55" width="70" height="75" rx="4" fill="#FAF8F5" opacity="0.5"/><rect x="140" y="42" width="18" height="45" rx="6" fill="#C8903A"/><rect x="144" y="46" width="10" height="18" rx="3" fill="#F0EDE8" opacity="0.6"/></svg>';
@@ -154,7 +173,7 @@ function renderGrid(items, containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
   el.innerHTML = items.map((p, idx) => `
-    <div class="card animate-in" data-brand="${p.brand || ''}" data-status="${p.price === 'Prix à venir' ? 'a-venir' : 'disponible'}" onclick="showProduct('${p.ref || p.id}')" style="animation-delay:${(idx * 0.04).toFixed(2)}s">
+    <div class="card animate-in" data-brand="${p.brand || ''}" data-status="${p.price === 'Prix à venir' ? 'a-venir' : 'disponible'}" data-format="${p.formatType || ''}" onclick="showProduct('${p.ref || p.id}')" style="animation-delay:${(idx * 0.04).toFixed(2)}s">
       ${mediaHTML(p)}
       <div class="card-body">
         <h3>${p.name}</h3>
@@ -179,6 +198,7 @@ function renderAllGrids() {
   renderGrid(nectars, 'grid-nectars');
   renderGrid(snacks, 'grid-snacks');
   renderGrid(graines, 'grid-graines');
+  renderGrid(ebooks, 'grid-ebooks');
 
   const svcEl = document.getElementById('grid-services');
   if (svcEl) {
@@ -230,7 +250,7 @@ function renderServiceCards() {
 //  PANIER (persisted in localStorage)
 // ──────────────────────────────────────────────
 var solarKitItems = solarKits.subs.map(function(sub) { return { id: sub.id, ref: sub.id, name: solarKits.name + ' — ' + sub.name, desc: sub.desc, cat: 'Services · Kits Solaires' }; });
-const allItems = [...abroOrganic, ...carrosserie, ...dashboard, ...parfums, ...entretienMaison, ...pursJus, ...nectars, ...snacks, ...graines, ...services.map(s => ({...s, ref: s.id})), {id: solarKits.id, ref: solarKits.id, name: solarKits.name, desc: solarKits.desc, cat: 'Services · Kits Solaires'}, ...solarKitItems];
+const allItems = [...abroOrganic, ...carrosserie, ...dashboard, ...parfums, ...entretienMaison, ...pursJus, ...nectars, ...snacks, ...graines, ...ebooks, ...services.map(s => ({...s, ref: s.id})), {id: solarKits.id, ref: solarKits.id, name: solarKits.name, desc: solarKits.desc, cat: 'Services · Kits Solaires'}, ...solarKitItems];
 let cart = JSON.parse(localStorage.getItem('ayi_cart') || '[]');
 
 function saveCart() { localStorage.setItem('ayi_cart', JSON.stringify(cart)); }
@@ -280,9 +300,11 @@ function applyFilters() {
   document.querySelectorAll('.card').forEach(card => {
     const brand = card.getAttribute('data-brand') || '';
     const status = card.getAttribute('data-status') || '';
-    const brandOk = activeFilters.brand === 'all' || brand === activeFilters.brand;
-    const statusOk = activeFilters.status === 'all' || status === activeFilters.status;
-    const show = brandOk && statusOk;
+    const format = card.getAttribute('data-format') || '';
+    const brandOk = !activeFilters.brand || activeFilters.brand === 'all' || brand === activeFilters.brand;
+    const statusOk = !activeFilters.status || activeFilters.status === 'all' || status === activeFilters.status;
+    const formatOk = !activeFilters.format || activeFilters.format === 'all' || format === activeFilters.format;
+    const show = brandOk && statusOk && formatOk;
     card.classList.toggle('filtered-out', !show);
     if (show) visibleCount++;
   });
@@ -308,6 +330,7 @@ function initScrollSpy() {
     'auto.html': 'index.html#produits',
     'maison.html': 'index.html#produits',
     'alimentation.html': 'index.html#produits',
+    'ebook.html': 'index.html#produits',
     'services.html': 'index.html#services',
     'contact.html': 'index.html#contact',
   };
@@ -338,6 +361,7 @@ const genericDesc = {
   'Alimentation · Nectar Fruileg': 'Nectar de fruits et légumes pressés, marque Fruileg, distribué par AYI Group.',
   'Alimentation · Snack': "Snack croustillant, friture à l'huile végétale. Distribué par AYI Group.",
   'Alimentation · Graines & épices': 'Graines de chia 100% bio : facilite la digestion, aide à réguler le cholestérol et la tension, riche en fibres. Produit du Cameroun (Ecocircus), distribué par AYI Group.',
+  'e-Book · Produits numériques': 'Produit numérique téléchargeable — livré par email après confirmation de commande. Guides, e-books et templates professionnels édités par AYI Group SARL.',
 };
 
 function showProduct(ref) {
