@@ -219,7 +219,7 @@ function renderGrid(items, containerId) {
         <span class="format">${p.format || ''}</span>
         <div class="card-footer">
           ${priceHTML(p)}
-          ${p.download ? `<a href="${p.download}" class="add-btn download-btn" onclick="event.stopPropagation()" download>📥 Télécharger</a>` : `<button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.ref || p.id}')">+ Ajouter</button>`}
+          ${p.download ? `<a href="${p.download}" class="add-btn download-btn" onclick="event.stopPropagation()" target="_blank" rel="noopener noreferrer">📥 Voir le PDF</a>` : `<button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.ref || p.id}')">+ Ajouter</button>`}
         </div>
       </div>
     </div>
@@ -461,8 +461,9 @@ function showProduct(ref) {
     var dlBtn = document.createElement('a');
     dlBtn.className = 'add-btn download-btn detail-dl-btn';
     dlBtn.href = item.download;
-    dlBtn.download = '';
-    dlBtn.textContent = '📥 Télécharger le PDF';
+    dlBtn.target = '_blank';
+    dlBtn.rel = 'noopener noreferrer';
+    dlBtn.textContent = '📥 Voir le PDF';
     dlBtn.style.marginTop = '12px';
     dlBtn.style.display = 'flex';
     dlBtn.style.justifyContent = 'center';
