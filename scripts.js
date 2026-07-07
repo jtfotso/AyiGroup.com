@@ -95,6 +95,7 @@ const ebooks = [
   {ref:'EB-010', name:'Guide — Comptabilité Simplifiée', format:'PDF · 30 pages', price:'3 500 FCFA', bulk:null, images:[], formatType:'Guide'},
   {ref:'EB-011', name:'Template — Suivi de Trésorerie', format:'Excel', price:'2 500 FCFA', bulk:null, images:[], formatType:'Template'},
   {ref:'EB-012', name:'Guide — Création d\'Entreprise au Cameroun', format:'PDF · 50 pages', price:'5 500 FCFA', bulk:'Pack guides création : 12 000 FCFA (EB-002 + EB-003 + EB-012)', images:[], formatType:'Guide'},
+  {ref:'EB-013', name:'E-Book — Créer son Site Web', format:'PDF · pages', price:'Gratuit', bulk:null, images:[], formatType:'E-Book', download:'ebooks/creer-son-site-web.pdf'},
 ];
 
 const services = [
@@ -180,7 +181,7 @@ function renderGrid(items, containerId) {
         <span class="format">${p.format || ''}</span>
         <div class="card-footer">
           ${priceHTML(p)}
-          <button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.ref || p.id}')">+ Ajouter</button>
+          ${p.download ? `<a href="${p.download}" class="add-btn download-btn" onclick="event.stopPropagation()" download>📥 Télécharger</a>` : `<button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.ref || p.id}')">+ Ajouter</button>`}
         </div>
       </div>
     </div>
@@ -404,6 +405,22 @@ function showProduct(ref) {
   }
 
   document.getElementById('detail-cta').onclick = function() { addToCart(ref); };
+
+  // Download button for digital products
+  const ctaWrap = document.getElementById('detail-cta').parentElement;
+  var existingDl = ctaWrap.querySelector('.detail-dl-btn');
+  if (existingDl) existingDl.remove();
+  if (item.download) {
+    var dlBtn = document.createElement('a');
+    dlBtn.className = 'add-btn download-btn detail-dl-btn';
+    dlBtn.href = item.download;
+    dlBtn.download = '';
+    dlBtn.textContent = '📥 Télécharger le PDF';
+    dlBtn.style.marginTop = '12px';
+    dlBtn.style.display = 'flex';
+    dlBtn.style.justifyContent = 'center';
+    ctaWrap.appendChild(dlBtn);
+  }
 
   document.querySelectorAll('.page-section, .hero, .stats-bar, .filter-bar, .cat-grid-wrap, .about-section, .category-hero').forEach(function(s) { s.style.display = 'none'; });
   document.getElementById('product-detail').style.display = 'block';
